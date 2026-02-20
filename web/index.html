@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Volundir Application</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <link id="splash-screen-css" rel="stylesheet" type="text/css" href="/assets/screens/volundir_pulse/splash.css">
+  </head>
+  <body class="app-body">
+    <div id="main-app-components" class="main-app-components"></div>
+    <div id="main-app-container" class="main-app-container"></div>
+
+    <div id="splash-screen" class="splash-screen fade">
+      <div class="pulse-container" id="pulse-container">
+        <div class="pulse-container-logo">
+          <img class="loading-logo pulse" src="/assets/screens/volundir_pulse/logo.png" alt="Loading Volundir Application..." />
+        </div>
+        <div class="loading-panel">
+          <div class="loading-title">Initializing...</div>
+          <div class="loading-item"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>

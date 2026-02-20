@@ -1,0 +1,6 @@
+
+{
+  "root": "/",
+  "controller": "home",
+  "action": "index"
+}

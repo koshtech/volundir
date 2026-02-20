@@ -1,0 +1,12 @@
+Volundir CLI
+
+Comandos:
+
+  server  | s   Inicia servidor
+  process | p   Processa arquivo
+  build   | b   Processa e salva
+  --help  | -h  Ajuda
+
+Parâmetros:
+
+  filepath | Caminho completo até o arquivo

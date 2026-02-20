@@ -1,0 +1,5 @@
+
+{
+  "name": { "required": true, "min": 3 },
+  "email": { "required": true, "format": "email" }
+}

@@ -1,0 +1,6 @@
+
+{
+  "root": "/app1",
+  "controller": "dashboard",
+  "action": "index"
+}

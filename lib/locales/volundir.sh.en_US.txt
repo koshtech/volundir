@@ -1,0 +1,12 @@
+Volundir CLI
+
+Commands:
+
+  server  | s   Starts the server
+  process | p   Processes the file
+  build   | b   Processes and saves
+  --help  | -h  Help
+
+Parameters:
+
+  filepath | Full path to the file
