@@ -1,0 +1,30 @@
+{
+  // "id": "http://localhost:3020/",
+  "name":"[:Volundir][:PWA]",
+  "short_name":"[:Volundir]",
+  "description":"[:Volundir] is a curated ecosystem of Kosh’s ideas — engineered to deliver a lightweight, agnostic, modular, and extensible Vanilla JavaScript framework.",
+  // "start_url":"http://localhost:3020/",
+  // "scope":"http://localhost:3020/",
+  "display":"standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation":"any",
+  "theme_color":"#8936FF",
+  "background_color":"#2EC6FE",
+  "dir": "auto",
+  "lang": "pt-BR",
+  "prefer_related_applications": false,
+  "icons":[
+    {
+      "purpose":"maskable",
+      "sizes":"512x512",
+      "src":"/icon512_maskable.png",
+      "type":"image/png"
+    },
+    {
+      "purpose":"any",
+      "sizes":"512x512",
+      "src":"/icon512_rounded.png",
+      "type":"image/png"
+    }
+  ]
+}
