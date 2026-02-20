@@ -39,7 +39,7 @@ if(response.ok) {
 
     console.log('Volundir: ', Volundir);
 
-     await Volundir.run();
+    await Volundir.run();
   }
 }
 else {
