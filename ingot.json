@@ -1,6 +1,6 @@
 {
   "name": "volundir",
   "version": "0.0.1",
-  "description": "[:Volundir] is the starting package of [:Volundir][:Apps].",
+  "description": "[:Volundir] is the starting package of [:Volundir][:PWA].",
   "dependencies": ["koshtech-base"]
 }
