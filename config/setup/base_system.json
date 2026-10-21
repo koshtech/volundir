@@ -1,0 +1,46 @@
+{
+  "pre_install": {
+    "directories": ["config/routes", "ingots", "locales", "log", "tmp/pids"]
+  },
+  "core_components": [
+    {
+      "name": "volundir",
+      "source": "https://github.com/koshtech/volundir.git",
+      "target": "ingots/volundir"
+    },
+    {
+      "name": "volundir-bash",
+      "source": "https://github.com/koshtech/volundir-bash.git",
+      "target": "ingots/volundir-bash"
+    },
+    {
+      "name": "volundir-help-base",
+      "source": "https://github.com/koshtech/volundir-help-base.git",
+      "target": "ingots/volundir-help-base"
+    },
+    {
+      "name": "volundir-ruby",
+      "source": "https://github.com/koshtech/volundir-ruby.git",
+      "target": "ingots/volundir-ruby"
+    },
+    {
+      "name": "volundir-ruby-server",
+      "source": "https://github.com/koshtech/volundir-ruby-server.git",
+      "target": "ingots/volundir-ruby-server"
+    },
+    {
+      "name": "volundir-ruby-analytics",
+      "source": "https://github.com/koshtech/volundir-ruby-analytics.git",
+      "target": "ingots/volundir-ruby-analytics"
+    }
+  ],
+  "post_install": {
+    "permissions": ["bin/volundir"],
+    "symlinks": [
+      {
+        "source": "ingots/volundir-bash/bin/volundir",
+        "destination": "bin/volundir"
+      }
+    ]
+  }
+}
