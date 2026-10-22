@@ -3,42 +3,36 @@
 
 INSTALL_PROFILE="$1"
 
-echo "
+echo -e "\n [:Volundir][:PWA] Welcome!
 
- [:Volundir][:PWA] Welcome!
+ Thanks for choosing our loved software!
 
- The Installer Script is now starting...
-
- Thanks for choosing our love software.
-
-"
-echo " [:Installer][:Dependencies] Verifying system dependencies..."
+ The Installer Script is now starting...\n"
+echo -e " [:Installer][:Dependencies] Verifying system dependencies...\n"
 
 # Checks operating system dependencies
 for cmd in git ruby curl tar; do
   echo -n "  checking for $cmd ..."
   if ! command -v "$cmd" &> /dev/null; then
     echo -n ": Not found"
-    echo ""
-    echo "   Error: The required command '$cmd' was not found."
-    echo "   Please install it using your system's package manager (apt, brew, yum)."
-    echo ""
-    echo " [:Installer][:Dependencies] Dependency not found $cmd."
+    echo -e "\n   Error: The required command '$cmd' was not found."
+    echo -e "   Please install it using your system's package manager (apt, brew, yum).\n"
+    echo -e " [:Installer][:Dependencies] Dependency not found $cmd.\n"
     exit 1
   fi
   echo ": Present"
 done
 
-echo " [:Installer][:Dependencies] Dependencies verified successfully."
+echo -e "\n [:Installer][:Dependencies] Dependencies verified successfully."
 
-echo " [:Installer][:Downloader] Downloading '$INSTALL_PROFILE' install profile..."
+echo -n " [:Installer][:Downloader] Downloading '$INSTALL_PROFILE' install profile..."
 
 mkdir -p "$HOME/tmp"
-
 curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/config/setup/$INSTALL_PROFILE_provile.env -o "$HOME/tmp/$INSTALL_PROFILE_profile.env"
 
 echo -n " Done."
-echo " [:Installer][:Environment] Loading '$INSTALL_PROFILE' profile..."
+
+echo -n " [:Installer][:Environment] Loading '$INSTALL_PROFILE' profile..."
 
 source "$HOME/tmp/${INSTALL_PROFILE}_profile.env"
 
@@ -48,19 +42,29 @@ export BASE_URL\
   VOLUNDIR_ROOT\
   INGOTS_ROOT
 
-# Creates the local structure
+echo -n " Done."
+echo -n " [:Installer][:Environment] Creating local structure..."
+
 mkdir -p "$KOSHTECH_HOME"
 mkdir -p "$INGOTS_ROOT"
 
+echo -n " Done."
+
+echo " [:Installer][:Downloader] Downloading essential Ingots..."
+
 for repo in $INGOTS; do
   if [ -d "$INGOTS_ROOT/$repo" ]; then
-    echo "==> [:$repo] already installed at $INGOTS_ROOT/$repo. Updating..."
+    echo " [:Installer][:Downloader][:$repo] already installed at $INGOTS_ROOT/$repo. Updating..."
     cd "$INGOTS_ROOT/$repo" && git pull
   else
-    echo "==> Downloading [:$repo] to $INGOTS_ROOT/$repo..."
+    echo " [:Installer][:Downloader] Downloading [:$repo] to $INGOTS_ROOT/$repo..."
     git clone "$BASE_URL/$repo.git" "$INGOTS_ROOT/$repo"
   fi
 done
+
+echo -n " Done."
+
+echo " [:Installer][:Ruby] launching Ruby Setup..."
 
 # Transitions to the Ruby installation script
 cd "$KOSHTECH_HOME"
