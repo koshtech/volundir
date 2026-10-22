@@ -30,7 +30,7 @@ echo -n " [:Installer][:Downloader] Downloading '$INSTALL_PROFILE' install profi
 mkdir -p "$HOME/tmp"
 curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/config/setup/$INSTALL_PROFILE_provile.env -o "$HOME/tmp/$INSTALL_PROFILE_profile.env"
 
-echo -n " Done."
+echo " Done."
 
 echo -n " [:Installer][:Environment] Loading '$INSTALL_PROFILE' profile..."
 
@@ -42,13 +42,13 @@ export BASE_URL\
   VOLUNDIR_ROOT\
   INGOTS_ROOT
 
-echo -n " Done."
+echo " Done."
 echo -n " [:Installer][:Environment] Creating local structure..."
 
 mkdir -p "$KOSHTECH_HOME"
 mkdir -p "$INGOTS_ROOT"
 
-echo -n " Done."
+echo " Done."
 
 echo " [:Installer][:Downloader] Downloading essential Ingots..."
 
@@ -62,7 +62,7 @@ for repo in $INGOTS; do
   fi
 done
 
-echo -n " Done."
+echo " Done."
 
 echo " [:Installer][:Ruby] launching Ruby Setup..."
 
