@@ -56,7 +56,7 @@ The code available in the main branch already provides the following capabilitie
 ## Install
 
 ```shell
-curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/bin/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/bin/install.sh | bash "development"
 ```
 
 

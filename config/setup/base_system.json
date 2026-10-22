@@ -1,45 +1,69 @@
 {
   "pre_install": {
-    "directories": ["config/routes", "ingots", "locales", "log", "tmp/pids"]
+    "directories": ["bin", "config/setup", "config/routes", "ingots", "locales", "log", "volundir/ingots", "tmp/pids"]
   },
   "core_components": [
     {
+      "name": "koshtech-base",
+      "source": "/home/kosh/.koshtech_dev/ingots/koshtech-base/.git",
+      "target": "ingots/koshtech-base"
+    },
+    {
       "name": "volundir",
-      "source": "https://github.com/koshtech/volundir.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir/.git",
       "target": "ingots/volundir"
     },
     {
+      "name": "hamarr",
+      "source": "/home/kosh/.koshtech_dev/ingots/hamarr/.git",
+      "target": "ingots/hamarr"
+    },
+    {
       "name": "volundir-bash",
-      "source": "https://github.com/koshtech/volundir-bash.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir-bash/.git",
       "target": "ingots/volundir-bash"
     },
     {
       "name": "volundir-help-base",
-      "source": "https://github.com/koshtech/volundir-help-base.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir-help-base/.git",
       "target": "ingots/volundir-help-base"
     },
     {
       "name": "volundir-ruby",
-      "source": "https://github.com/koshtech/volundir-ruby.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir-ruby/.git",
       "target": "ingots/volundir-ruby"
     },
     {
       "name": "volundir-ruby-server",
-      "source": "https://github.com/koshtech/volundir-ruby-server.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir-ruby-server/.git",
       "target": "ingots/volundir-ruby-server"
     },
     {
       "name": "volundir-ruby-analytics",
-      "source": "https://github.com/koshtech/volundir-ruby-analytics.git",
+      "source": "/home/kosh/.koshtech_dev/ingots/volundir-ruby-analytics/.git",
       "target": "ingots/volundir-ruby-analytics"
     }
   ],
   "post_install": {
     "permissions": ["bin/volundir"],
+    "copy": [
+      {
+        "source": "volundir-bash/bin/volundir",
+        "destination": "bin/volundir"
+      },
+      {
+        "source": "volundir-ruby/bin/volundir_ruby.rb",
+        "destination": "bin/volundir_ruby.rb"
+      }
+    ],
     "symlinks": [
       {
-        "source": "ingots/volundir-bash/bin/volundir",
+        "source": "volundir-bash/bin/volundir",
         "destination": "bin/volundir"
+      },
+      {
+        "source": "volundir-ruby/bin/volundir_ruby.rb",
+        "destination": "bin/volundir_ruby.rb"
       }
     ]
   }

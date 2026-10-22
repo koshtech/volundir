@@ -28,7 +28,8 @@ echo -e "\n [:Installer][:Dependencies] Dependencies verified successfully."
 echo -n " [:Installer][:Downloader] Downloading '${INSTALL_PROFILE}' install profile..."
 
 mkdir -p "$HOME/tmp"
-# curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/config/setup/${INSTALL_PROFILE}_provile.env -o "$HOME/tmp/${INSTALL_PROFILE}_profile.env"
+
+curl -sSL https://raw.githubusercontent.com/koshtech/volundir/refs/heads/main/config/setup/${INSTALL_PROFILE}_profile.env -o "$HOME/tmp/${INSTALL_PROFILE}_profile.env"
 
 echo " Done."
 
@@ -77,23 +78,37 @@ echo -e " [:Installer] Essential Ingots installed.\n"
 echo -n " [:Installer][:Ruby] Creating Ruby Env..."
 cd "${KOSHTECH_HOME}"
 
-for bin_link in $BIN_LINKS; do
-  ln -sf "${INGOTS_ROOT}/${bin_link}" "${KOSHTECH_HOME}/bin/"
-done
-
-for cp_files in $CP_ROOT_FILES; do
-  cp  "${INGOTS_ROOT}/${cp_files}" "${KOSHTECH_HOME}/"
+for cp_file in $CP_ROOT_FILES; do
+  cp  "${INGOTS_ROOT}/${cp_file}" "${KOSHTECH_HOME}/"
 done
 
 echo -e " Done.\n"
 
 # Transitions to the Ruby installation script
-if [ -f "bin/setup" ]; then
-  echo "==> Handing over to Ruby installer script..."
-  bundle install
-  echo " [:Installer][:Ruby] Launching Ruby Setup..."
-  ruby bin/setup
+if [ -f "${INGOTS_ROOT}/volundir/volundir/ruby/setup/setup.rb" ]; then
+  echo " [:Volundir][:Ruby] Handing over to Ruby Installer..."
+  cmdout=$(bundle install 2>&1)
+  es=$?
+
+  if ((es)); then
+    echo " [:Volundir][:Ruby][:Error] Cannot run Ruby Bundler: ${cmdout}"
+    exit 1
+  else
+    echo " [:Volundir][:Ruby] Ruby Bundler successfully!"
+  fi
+
+  echo " [:Volundir][:Ruby] Launching Ruby Setup..."
+
+  cmdout=$(ruby "${INGOTS_ROOT}/volundir/volundir/ruby/setup/setup.rb" 2>&1)
+  es=$?
+
+  if ((es)); then
+    echo " [:Volundir][:Installer][:Error] Cannot start Ruby Installer: ${cmdout}"
+    exit 1
+  else
+    echo " [:Volundir][:Installer] Installed successfully!"
+    echo " [:Volundir][:Installer] Add 'export PATH=\"\$HOME/.koshtech/bin:\$PATH\"'' to your .bashrc / .zshrc"
+  fi
 else
-  echo "==> Volundir installed successfully!"
-  echo "Add 'export PATH=\"\$HOME/.koshtech/bin:\$PATH\"'' to your .bashrc / .zshrc"
+  echo " [:Volundir][:Installer][:Error] Cannot start Ruby Installer."
 fi
